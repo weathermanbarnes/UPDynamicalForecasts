@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Dynamical Tropopause</title>
+  <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+  <meta content="UP Dynamical Postprocessed Forecast" name="DESCRIPTION">
+  
+	  <!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://www.up.ac.za/themes/up2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://www.up.ac.za/themes/up2.0/css/style.css">
+	<link rel="stylesheet" href="https://www.up.ac.za/themes/up2.0/css/general.css">
+	<link rel="stylesheet" href="https://www.up.ac.za/themes/up2.0/css/modifiers.css">
+	<!-- Icons -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" href="https://www.up.ac.za/themes/up2.0/css/compiled-jquery.css">
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<link rel="stylesheet" href="https://www.up.ac.za/themes/up2.0/assets/css/ie10-viewport-bug-workaround.css"><link href="https://www.up.ac.za/themes/up2.0/css/colours/green.css" type="text/css" rel="stylesheet">
+	
+<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=ZymIiSXaagJPRqBEHTHGgJBaQWa2VFTZrQDHr4bpshCYUqKjiRQgpCcISLPXvFDlimmFzyCgIAWIWvCTn9njIjVSs5J_eq2yBwkGy-eTK9c" charset="UTF-8"></script><script type="text/javascript" src=/javascript/new-window.js></script>
+<script type="text/JavaScript">
+ MAX_FRAMES=21;
+ var j = 0;
+ var frame = 0;
+ var timeout_id = null;
+
+ var images = new Array(MAX_FRAMES);
+ for (var i = 0; i < MAX_FRAMES; i++) {
+
+  images[i] = new Image();
+   J = i*2;
+   images[i].src = "2D_CrossSection_40S_" + J + ".png";
+}
+
+//Now get to the functions
+function animate_f() {
+  document.animation.src = images[frame].src;
+  frame = (frame + 1) % MAX_FRAMES;
+ if (frame==0) {
+    if (timeout_id) clearTimeout(timeout_id);
+    timeout_id = setTimeout("animate_f()", 3000);
+ }
+ else{
+    if (timeout_id) clearTimeout(timeout_id);
+      timeout_id = setTimeout("animate_f()", 700);
+ }
+}
+
+function animate_b() {
+  frame = (frame - 1) % MAX_FRAMES;
+  if (frame < 0) frame += MAX_FRAMES;
+  document.animation.src = images[frame].src;
+  if (frame==0) {
+    if (timeout_id) clearTimeout(timeout_id);
+    timeout_id = setTimeout("animate_b()", 3000);
+ }
+ else{
+    if (timeout_id) clearTimeout(timeout_id);
+      timeout_id = setTimeout("animate_b()", 550);
+ }
+}
+
+function sstep(size) {
+  frame = (frame + size) % MAX_FRAMES;
+  if (frame < 0) frame += MAX_FRAMES;
+  document.animation.src = images[frame].src;
+}
+
+function last(){
+  frame = MAX_FRAMES-1;
+  document.animation.src = images[frame].src;
+}
+
+function first(){
+  frame = MAX_FRAMES-MAX_FRAMES;
+  document.animation.src = images[frame].src;
+}
+
+</script>
+</head>
+<body>
+<table>
+ <tr> 
+  <td valign="top" align="center" width="533"><a name="contents"></a>
+   <table border="0" cellPadding="2" cellSpacing="0" width="533">
+    <tr>
+     <td>
+      <IMG SRC="2D_CrossSection_40S_0.png" alt="2D Cross-section of PV" NAME="animation" border="1">
+     </td>
+    </tr>
+    <tr>
+     <td align="center">
+      <FORM action="">
+       <INPUT TYPE=button VALUE="First" onClick="first()" title="First image">
+       <INPUT TYPE=button VALUE="< Step" onClick="sstep(-1)" title="Back up one frame">
+       <INPUT TYPE=button VALUE=" << " onClick="animate_b()" title="Loop backward">
+       <INPUT TYPE=button VALUE=" >> " onClick="animate_f()" title="Loop forward">
+       <INPUT TYPE=button VALUE="Step >" onClick="sstep(1)" title="Advance forward one frame">
+       <INPUT TYPE=button VALUE="Last" onClick="last()" title="Last image"><br>
+       <INPUT TYPE=button VALUE="Stop" onClick="if (timeout_id) 
+         clearTimeout(timeout_id); timeout_id = null; "><br> 
+       <input type=button Value="Close Window" onClick="window.close()">
+      </FORM>
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</body>
+</html>
