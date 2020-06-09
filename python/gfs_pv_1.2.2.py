@@ -32,7 +32,7 @@ from datetime import datetime, timedelta
 
 # VALUES TO SET *************************************************
 # set date, lat-lon range, and PV-value definition of tropopause
-mydate='20200606'
+mydate='20200609'
 myhour='00'
 (lat1,lat2)=(-75,-10)
 (lon1,lon2)=(-50,50)
